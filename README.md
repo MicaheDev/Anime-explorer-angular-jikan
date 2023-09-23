@@ -1,4 +1,7 @@
-# AnimeExplorer
+# AnimeExplorer - Angular -Jikan/API
+
+![StreetDevs Home Image](./mockup.png)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
