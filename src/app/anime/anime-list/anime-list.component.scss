@@ -1,57 +1,63 @@
-.list-container__flex {
+.list-container {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
+  
+  .list-container__flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 
-  .list-item__container__card {
-    width: 200px;
-    height: max-content;
-    overflow: hidden;
-    position: relative;
-    border-radius: 10px;
-    border: 2px solid var(--main-black);
-    max-height: 350px;
-    height: 300px;
-
-    .list-item__card__title {
-      position: absolute;
-      padding: 10px;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      width: 100%;
-      background-color: var(--main-black);
-      color: var(--main-white);
-    }
-
-    .list-item__card__image {
-      width: 100%;
+    .list-item__container__card {
+      width: 200px;
       height: max-content;
-      object-fit: cover;
-    }
-
-    .list-item__card__favorite {
-      width: 30px;
-      height: 30px;
-
-      top: 0;
-      right: 0;
-      position: absolute;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      margin: 5px;
-      padding: 20px;
+      overflow: hidden;
+      position: relative;
       border-radius: 10px;
-      background: var(--main-white);
       border: 2px solid var(--main-black);
-      transition: background-color 0.2s ease-in-out;
+      max-height: 350px;
+      height: 300px;
 
-      &:hover  {
-        background-color: var(--main-rose);
+      .list-item__card__title {
+        position: absolute;
+        padding: 10px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--main-black);
+        color: var(--main-white);
+      }
+
+      .list-item__card__image {
+        width: 100%;
+        height: max-content;
+        object-fit: cover;
+      }
+
+      .list-item__card__favorite {
+        width: 30px;
+        height: 30px;
+
+        top: 0;
+        right: 0;
+        position: absolute;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 5px;
+        padding: 20px;
+        border-radius: 10px;
+        background: var(--main-white);
+        border: 2px solid var(--main-black);
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: var(--main-rose);
+        }
       }
     }
   }
