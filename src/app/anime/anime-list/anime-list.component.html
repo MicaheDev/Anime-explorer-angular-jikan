@@ -1,5 +1,5 @@
 <h1>Top Animes</h1>
-<div class="list-container__flex">
+<div  *ngIf="animes$ | async as animes; else loading" class="list-container__flex">
   <div class="list-item__container__card" *ngFor="let anime of animes">
     <h3 class="list-item__card__title">{{ anime?.title }}</h3>
     <button class="list-item__card__favorite">
@@ -8,7 +8,8 @@
     <img
       class="list-item__card__image"
       [src]="anime?.images?.jpg?.image_url"
-      alt="{{ anime.title }}"
+      alt="{{ anime?.title }}"
     />
   </div>
 </div>
+<ng-template #loading>Loading...</ng-template>

@@ -8,9 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [
-      {path: "anime", component: AnimeListComponent}
-    ],
+    children: [{ path: 'anime', component: AnimeListComponent }],
   },
 ];
 

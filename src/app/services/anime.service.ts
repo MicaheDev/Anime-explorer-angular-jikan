@@ -1,30 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
+import { catchError, tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { setAnimes } from '../state/anime.actions';
+import { AnimeState } from '../state/anime.reducer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimeService {
-  private apiUrl = "https://api.jikan.moe/v4/top/anime"
-
+  private apiUrl = 'https://api.jikan.moe/v4/top/anime';
   private localStorageKey = 'animeData';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store<{ anime: AnimeState }>
+  ) {}
 
   getAnimes(): Observable<any> {
-    // Intenta obtener los datos del localStorage
+    // Intenta obtener los datos del Local Storage
     const cachedData = localStorage.getItem(this.localStorageKey);
     if (cachedData) {
-      return of(JSON.parse(cachedData)); // Devuelve los datos almacenados en caché
+      // Si los datos están en el Local Storage, actualiza el estado de NgRx
+      const parsedData = JSON.parse(cachedData);
+      this.store.dispatch(setAnimes({ payload: parsedData.data }));
+      return of(parsedData); // Utiliza 'of' para crear un observable
     } else {
       // Si no hay datos en caché, realiza una llamada a la API
       return this.http.get(this.apiUrl).pipe(
         tap((data) => {
-          // Almacena los datos en el localStorage para futuras solicitudes
+          // Almacena los datos en el Local Storage para futuras solicitudes
           localStorage.setItem(this.localStorageKey, JSON.stringify(data));
+          // Actualiza el estado de NgRx
+          this.store.dispatch(setAnimes({ payload: data }));
         }),
         catchError(this.handleError('getAnimes', []))
       );
@@ -38,5 +47,4 @@ export class AnimeService {
       return of(result as T);
     };
   }
-  
 }
