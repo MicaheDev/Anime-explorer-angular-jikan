@@ -5,15 +5,17 @@
     class="list-container__flex"
   >
     <div class="list-item__container__card" *ngFor="let anime of animes">
-      <h3 class="list-item__card__title">{{ anime?.title }}</h3>
       <button class="list-item__card__favorite">
         <span class="material-symbols-outlined"> favorite </span>
       </button>
-      <img
-        class="list-item__card__image"
-        [src]="anime?.images?.jpg?.image_url"
-        alt="{{ anime?.title }}"
-      />
+      <a [routerLink]="['/anime', anime?.mal_id]">
+        <h3 class="list-item__card__title">{{ anime?.title }}</h3>
+        <img
+          class="list-item__card__image"
+          [src]="anime?.images?.jpg?.image_url"
+          alt="{{ anime?.title }}"
+        />
+      </a>
     </div>
   </div>
 </div>

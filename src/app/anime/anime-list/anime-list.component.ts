@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AnimeService } from 'src/app/services/anime.service';
-import { AnimeState, selectAnimeList } from 'src/app/state/anime.reducer';
+import { AnimeState } from 'src/app/state/anime.reducer';
+import { selectAnimeList } from 'src/app/state/anime.selectors';
 
 @Component({
   selector: 'app-anime-list',
@@ -18,7 +19,7 @@ export class AnimeListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.animeService.getAnimes()
+    this.animeService.getAnimes();
     this.animes$ = this.store.select(selectAnimeList);
   }
 }

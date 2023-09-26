@@ -1,0 +1,22 @@
+<div class="detail-container__flex" *ngIf="anime$ | async as anime">
+  <figure class="left">
+    <img
+      class="anime-image"
+      [src]="anime?.images?.jpg?.large_image_url"
+      alt="{{ anime?.title }}"
+    />
+  </figure>
+  <div class="right">
+    <a [href]="anime?.url" target="_blank" class="anime-title">{{
+      anime?.title
+    }}</a>
+    <div class="info-stats">
+      <span class="stat">#{{ anime?.rank }}</span>
+      <span class="stat">{{ anime?.score }}</span>
+    </div>
+    <div class="info-synopsis">
+      <h3 >Synopsis</h3>
+      <p>{{ anime?.synopsis }}</p>
+    </div>
+  </div>
+</div>

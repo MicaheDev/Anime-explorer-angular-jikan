@@ -1,4 +1,4 @@
-import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { setAnimes } from './anime.actions';
 
 export interface AnimeState {
@@ -8,14 +8,6 @@ export interface AnimeState {
 const initialState: AnimeState = {
   animes: [],
 };
-
-export const selectAnimeState = createFeatureSelector<AnimeState>('Anime');
-
-// Selector para obtener la lista de animes
-export const selectAnimeList = createSelector(
-  selectAnimeState,
-  (state) => state.animes
-);
 
 export const animeReducer = createReducer(
   initialState,
