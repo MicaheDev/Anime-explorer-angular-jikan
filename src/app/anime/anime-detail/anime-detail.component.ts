@@ -38,7 +38,7 @@ export class AnimeDetailComponent implements OnInit {
   ngOnInit(): void {
     const mal_id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.animeService.getAnimes();
+    this.animeService.getAnimes().subscribe();
     this.animes$ = this.store.select(selectAnimeList);
     this.anime$ = this.store.select(selectAnimeByMalId(mal_id));
   }

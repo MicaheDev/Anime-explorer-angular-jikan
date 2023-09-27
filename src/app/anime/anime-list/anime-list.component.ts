@@ -19,7 +19,7 @@ export class AnimeListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.animeService.getAnimes();
+    this.animeService.getAnimes().subscribe()
     this.animes$ = this.store.select(selectAnimeList);
   }
 }
